@@ -18,6 +18,12 @@ const ClassList = lazy(() => import('@/pages/training/class'))
 const StudentList = lazy(() => import('@/pages/training/student'))
 const ScheduleList = lazy(() => import('@/pages/training/schedule'))
 const AttendancePage = lazy(() => import('@/pages/training/attendance'))
+const ShiftTemplate = lazy(() => import('@/pages/schedule/shift'))
+const SchedulePlan = lazy(() => import('@/pages/schedule/plan'))
+const GroupCustomer = lazy(() => import('@/pages/group/customer'))
+const GroupOrder = lazy(() => import('@/pages/group/order'))
+const ReceivableBill = lazy(() => import('@/pages/finance/receivable'))
+const PrepaymentAccount = lazy(() => import('@/pages/finance/prepayment'))
 
 function App() {
   return (
@@ -67,6 +73,24 @@ function App() {
         } />
         <Route path="training/attendance" element={
           <Suspense fallback={<Loading />}><AttendancePage /></Suspense>
+        } />
+        <Route path="schedule/shift" element={
+          <Suspense fallback={<Loading />}><ShiftTemplate /></Suspense>
+        } />
+        <Route path="schedule/plan" element={
+          <Suspense fallback={<Loading />}><SchedulePlan /></Suspense>
+        } />
+        <Route path="group/customer" element={
+          <Suspense fallback={<Loading />}><GroupCustomer /></Suspense>
+        } />
+        <Route path="group/order" element={
+          <Suspense fallback={<Loading />}><GroupOrder /></Suspense>
+        } />
+        <Route path="finance/receivable" element={
+          <Suspense fallback={<Loading />}><ReceivableBill /></Suspense>
+        } />
+        <Route path="finance/prepayment" element={
+          <Suspense fallback={<Loading />}><PrepaymentAccount /></Suspense>
         } />
       </Route>
     </Routes>

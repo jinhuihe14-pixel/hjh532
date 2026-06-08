@@ -10,6 +10,10 @@ import {
   TeamOutlined,
   LogoutOutlined,
   SettingOutlined,
+  ScheduleOutlined,
+  UsergroupAddOutlined,
+  FileTextOutlined,
+  WalletOutlined,
 } from '@ant-design/icons'
 import { useNavigate, useLocation, Outlet } from 'react-router-dom'
 import { useAuthStore } from '@/store/auth'
@@ -64,6 +68,24 @@ const menuItems = [
     ],
   },
   {
+    key: '/schedule',
+    icon: <ScheduleOutlined />,
+    label: '智能排班',
+    children: [
+      { key: '/schedule/shift', label: '班次模板' },
+      { key: '/schedule/plan', label: '排班表' },
+    ],
+  },
+  {
+    key: '/group',
+    icon: <UsergroupAddOutlined />,
+    label: '团单管理',
+    children: [
+      { key: '/group/customer', label: '团体客户' },
+      { key: '/group/order', label: '团单订单' },
+    ],
+  },
+  {
     key: '/event',
     icon: <TrophyOutlined />,
     label: '赛事管理',
@@ -77,6 +99,8 @@ const menuItems = [
     label: '财务管理',
     children: [
       { key: '/finance/order', label: '订单查询' },
+      { key: '/finance/receivable', label: '应收账单' },
+      { key: '/finance/prepayment', label: '预存账户' },
       { key: '/finance/daily-close', label: '日结管理' },
       { key: '/finance/cost', label: '成本核算' },
     ],

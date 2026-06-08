@@ -238,3 +238,246 @@ export function recordAttendance(params: {
 export function batchRecordAttendance(scheduleId: number, attendanceList: any[]) {
   return request.post('/training/attendance/batch', attendanceList, { params: { scheduleId } })
 }
+
+export function getShiftList() {
+  return request.get('/schedule/shift/list')
+}
+
+export function getShift(id: number) {
+  return request.get(`/schedule/shift/${id}`)
+}
+
+export function addShift(data: any) {
+  return request.post('/schedule/shift', data)
+}
+
+export function updateShift(data: any) {
+  return request.put('/schedule/shift', data)
+}
+
+export function deleteShift(id: number) {
+  return request.delete(`/schedule/shift/${id}`)
+}
+
+export function getSchedulePlanPage(params: PageParams & {
+  positionType?: string
+  planStatus?: number
+}) {
+  return request.get('/schedule/plan/page', { params })
+}
+
+export function getSchedulePlan(id: number) {
+  return request.get(`/schedule/plan/${id}`)
+}
+
+export function generateSchedule(params: {
+  positionType: string
+  startDate: string
+  endDate: string
+  scheduleType?: string
+}) {
+  return request.post('/schedule/plan/generate', null, { params })
+}
+
+export function publishSchedulePlan(id: number) {
+  return request.post(`/schedule/plan/publish/${id}`)
+}
+
+export function cancelSchedulePlan(id: number) {
+  return request.post(`/schedule/plan/cancel/${id}`)
+}
+
+export function getScheduleDetailList(planId: number) {
+  return request.get(`/schedule/detail/list/${planId}`)
+}
+
+export function getScheduleDetailByPosition(params: {
+  positionType: string
+  date: string
+}) {
+  return request.get('/schedule/detail/position', { params })
+}
+
+export function getCustomerPage(params: PageParams & {
+  customerType?: string
+  customerLevel?: string
+  keyword?: string
+}) {
+  return request.get('/group/customer/page', { params })
+}
+
+export function getCustomerList() {
+  return request.get('/group/customer/list')
+}
+
+export function getCustomer(id: number) {
+  return request.get(`/group/customer/${id}`)
+}
+
+export function addCustomer(data: any) {
+  return request.post('/group/customer', data)
+}
+
+export function updateCustomer(data: any) {
+  return request.put('/group/customer', data)
+}
+
+export function deleteCustomer(id: number) {
+  return request.delete(`/group/customer/${id}`)
+}
+
+export function getGroupOrderPage(params: PageParams & {
+  customerId?: number
+  orderStatus?: number
+  payStatus?: number
+  orderType?: string
+}) {
+  return request.get('/group/order/page', { params })
+}
+
+export function getGroupOrder(id: number) {
+  return request.get(`/group/order/${id}`)
+}
+
+export function createGroupOrder(data: any) {
+  return request.post('/group/order', data)
+}
+
+export function updateGroupOrder(data: any) {
+  return request.put('/group/order', data)
+}
+
+export function confirmGroupOrder(id: number) {
+  return request.post(`/group/order/confirm/${id}`)
+}
+
+export function cancelGroupOrder(id: number) {
+  return request.post(`/group/order/cancel/${id}`)
+}
+
+export function finishGroupOrder(id: number) {
+  return request.post(`/group/order/finish/${id}`)
+}
+
+export function getVerificationPage(params: PageParams & {
+  orderId?: number
+  venueId?: number
+  startDate?: string
+  endDate?: string
+}) {
+  return request.get('/group/verification/page', { params })
+}
+
+export function verifyOrder(params: {
+  orderId: number
+  venueId: number
+  verifyDate: string
+  startTime: string
+  endTime: string
+  actualPeople?: number
+  usedCount?: number
+}) {
+  return request.post('/group/verification', null, { params })
+}
+
+export function cancelVerification(id: number, reason?: string) {
+  return request.post(`/group/verification/cancel/${id}`, null, { params: { reason } })
+}
+
+export function getReceivableBillPage(params: PageParams & {
+  customerType?: string
+  customerId?: number
+  billStatus?: number
+  billType?: string
+  startDate?: string
+  endDate?: string
+}) {
+  return request.get('/finance/receivable-bill/page', { params })
+}
+
+export function getReceivableBill(id: number) {
+  return request.get(`/finance/receivable-bill/${id}`)
+}
+
+export function createReceivableBill(data: any) {
+  return request.post('/finance/receivable-bill', data)
+}
+
+export function updateReceivableBill(data: any) {
+  return request.put('/finance/receivable-bill', data)
+}
+
+export function remindReceivableBill(id: number) {
+  return request.post(`/finance/receivable-bill/remind/${id}`)
+}
+
+export function getPaymentPage(params: PageParams & {
+  billId?: number
+  customerId?: number
+  paymentStatus?: number
+  paymentType?: string
+  startDate?: string
+  endDate?: string
+}) {
+  return request.get('/finance/receivable-payment/page', { params })
+}
+
+export function createPayment(data: any) {
+  return request.post('/finance/receivable-payment', data)
+}
+
+export function confirmPayment(id: number) {
+  return request.post(`/finance/receivable-payment/confirm/${id}`)
+}
+
+export function getPrepaymentAccountPage(params: PageParams & {
+  accountType?: string
+  customerType?: string
+  customerId?: number
+  status?: number
+  keyword?: string
+}) {
+  return request.get('/finance/prepayment-account/page', { params })
+}
+
+export function getPrepaymentAccount(id: number) {
+  return request.get(`/finance/prepayment-account/${id}`)
+}
+
+export function createPrepaymentAccount(data: any) {
+  return request.post('/finance/prepayment-account', data)
+}
+
+export function rechargePrepayment(id: number, params: {
+  amount: number
+  giftAmount?: number
+  businessType?: string
+  businessId?: number
+  businessNo?: string
+  operatorId?: number
+  operatorName?: string
+  remark?: string
+}) {
+  return request.post(`/finance/prepayment-account/recharge/${id}`, null, { params })
+}
+
+export function consumePrepayment(id: number, params: {
+  amount: number
+  balanceType?: string
+  businessType?: string
+  businessId?: number
+  businessNo?: string
+  operatorId?: number
+  operatorName?: string
+  remark?: string
+}) {
+  return request.post(`/finance/prepayment-account/consume/${id}`, null, { params })
+}
+
+export function getPrepaymentLogPage(params: PageParams & {
+  accountId?: number
+  changeType?: string
+  businessType?: string
+}) {
+  return request.get('/finance/prepayment-log/page', { params })
+}
