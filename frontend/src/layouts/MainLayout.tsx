@@ -11,7 +11,7 @@ import {
   LogoutOutlined,
   SettingOutlined,
 } from '@ant-design/icons'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, Outlet } from 'react-router-dom'
 import { useAuthStore } from '@/store/auth'
 import { useState } from 'react'
 
@@ -93,7 +93,7 @@ const menuItems = [
   },
 ]
 
-function MainLayout({ children }: { children: React.ReactNode }) {
+function MainLayout() {
   const [collapsed, setCollapsed] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
@@ -199,7 +199,7 @@ function MainLayout({ children }: { children: React.ReactNode }) {
           </Dropdown>
         </Header>
         <Content style={{ margin: '16px', padding: 0, minHeight: 280 }}>
-          {children}
+          <Outlet />
         </Content>
       </Layout>
     </Layout>
