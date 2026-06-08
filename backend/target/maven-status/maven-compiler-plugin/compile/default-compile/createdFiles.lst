@@ -1,0 +1,8 @@
+com/swim/service/training/impl/StudentServiceImpl.class
+com/swim/service/training/CourseService.class
+com/swim/service/training/MakeupPlanService.class
+com/swim/mapper/training/CourseMapper.class
+com/swim/service/training/impl/CourseServiceImpl.class
+com/swim/service/training/StudentService.class
+com/swim/service/training/impl/MakeupPlanServiceImpl.class
+com/swim/config/MybatisPlusConfig.class
